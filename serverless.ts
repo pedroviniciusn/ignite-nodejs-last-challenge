@@ -33,12 +33,24 @@ const serverlessConfiguration: AWS = {
   },
   functions: {
     createTodo: {
-      handler: "src/functions/createTodo.handler",
+      handler: 'src/functions/createTodo.handler',
       events: [
         {
           http: {
             path: 'createTodo/{user_id}',
             method: 'post',
+            cors: true,
+          },
+        },
+      ],
+    },
+    getTodo: {
+      handler: 'src/functions/getTodo.handler',
+      events: [
+        {
+          http: {
+            path: 'getTodo/{user_id}',
+            method: 'get',
             cors: true,
           },
         },
@@ -78,15 +90,15 @@ const serverlessConfiguration: AWS = {
           },
           AttributeDefinitions: [
             {
-              AttributeName: "id",
+              AttributeName: "user_id",
               AttributeType: "S",
-            },
+            }
           ],
           KeySchema: [
             {
-              AttributeName: "id",
+              AttributeName: "user_id",
               KeyType: "HASH",
-            },
+            }
           ],
         },
       },

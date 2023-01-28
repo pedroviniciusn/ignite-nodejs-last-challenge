@@ -12,7 +12,7 @@ export const handler: APIGatewayProxyHandler = async (event) => {
       TableName: "users_todos",
       Item: {
         id: uuidV4(),
-        user_id,
+        user_id: user_id,
         title,
         done: false,
         created_at: dayjs().get("date"),
